@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pushpendra Uikey | Portfolio</title>
+    <meta name="description" content="Pushpendra Uikey, CSE at IIT Bombay: systems, compilers, networks and security projects, and internships at Atlassian and Selec Controls.">
     <style>
         :root {
             --bg: #f5f7fb;
@@ -262,6 +263,50 @@
                 justify-content: center;
             }
         }
+        .exp-item + .exp-item {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+        .exp-head {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 0.3rem 1rem;
+        }
+        .exp-head h3 {
+            margin: 0;
+            font-size: 1.05rem;
+        }
+        .exp-item ul,
+        .project-card ul {
+            margin: 0.4rem 0 0;
+            padding-left: 1.1rem;
+        }
+        .team {
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin: -0.2rem 0 0.4rem;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 0.8rem;
+        }
+        .skills-grid div {
+            background: var(--surface-soft);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0.75rem 0.9rem;
+        }
+        .skills-grid h3 {
+            margin: 0 0 0.3rem;
+            font-size: 0.95rem;
+        }
+        .skills-grid p {
+            margin: 0;
+            font-size: 0.92rem;
+        }
     </style>
 </head>
 <body>
@@ -270,9 +315,10 @@
             <div class="brand">Pushpendra Uikey</div>
             <nav>
                 <a href="#home">Home</a>
-                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
                 <a href="#projects">Projects</a>
-                <a href="#resume">Resume</a>
+                <a href="#skills">Skills</a>
+                <a href="#achievements">Achievements</a>
                 <a href="#contact">Contact</a>
                 <button class="toggle-btn" id="themeToggle" type="button" aria-label="Toggle dark mode">🌙 Dark</button>
             </nav>
@@ -282,22 +328,45 @@
     <main class="container">
         <section id="home" class="hero">
             <div>
-                <h1>Building practical software with algorithms + real-world impact.</h1>
-                <p>This is the official website of <strong>Pushpendra Uikey</strong>, a Computer Science undergraduate at IIT Bombay focused on C++, algorithms, automation, and ML-driven products.</p>
+                <h1>Systems, compilers, networks and security, mostly in C++.</h1>
+                <p>I'm <strong>Pushpendra Uikey</strong>, a final-year Computer Science &amp; Engineering student at IIT Bombay (class of 2027). I like working close to the machine: I've written a compiler, extended the xv6 kernel, and built secure chat and DNS systems from the protocol up. I've interned at Atlassian (backend and LLM agents in Kotlin) and Selec Controls (C++/MFC desktop tooling).</p>
+                <p style="margin-top:0.8rem;">Looking for software engineering roles in systems, backend or security.</p>
             </div>
             <div class="section-card">
                 <h2 style="margin-top:0;">Quick Highlights</h2>
                 <ul class="highlight-list muted">
-                    <li>Vahani Scholar • Dakshana Alumnus • NTSE Scholar</li>
-                    <li>Strong in C++, Python, DSA, and problem solving</li>
-                    <li>Current focus: time-series stock prediction (StockNet)</li>
+                    <li>Software Engineering Intern, Atlassian (2026)</li>
+                    <li>Software Development Intern, Selec Controls (2025)</li>
+                    <li>JEE Advanced 99.06 percentile • Vahani, Dakshana and NTSE Scholar</li>
+                    <li>600+ C++ solutions on LeetCode, Codeforces and CSES</li>
                 </ul>
             </div>
         </section>
 
-        <section id="about" class="section-card">
-            <h2>About Me</h2>
-            <p class="muted">I enjoy solving complex problems and turning ideas into reliable software. I have worked on projects in game development, automation, predictive analytics, embedded systems, and interactive data visualization.</p>
+        <section id="experience" class="section-card">
+            <h2>Experience</h2>
+            <div class="exp-item">
+                <div class="exp-head">
+                    <h3>Software Engineering Intern · Atlassian India</h3>
+                    <span class="muted">May 2026 – Jul 2026</span>
+                </div>
+                <ul class="muted">
+                    <li>Built an LLM onboarding agent on Atlassian Rovo that guides managers through onboarding new-grad hires; in testing it cut a manager's effort from 4–5 hours to about 30 minutes.</li>
+                    <li>Wrote the full stack in Kotlin (backend) and TypeScript (UI), shipped to production, with multi-phase task state in Redis so interrupted flows resume where they stopped.</li>
+                    <li>Connected HR database events to internal ticketing and Slack alerts, and kept the agent on fixed steps with strict system prompts and backend validation.</li>
+                </ul>
+            </div>
+            <div class="exp-item">
+                <div class="exp-head">
+                    <h3>Software Development Intern · Selec Controls Pvt. Ltd.</h3>
+                    <span class="muted">Jun 2025 – Jul 2025 · Navi Mumbai</span>
+                </div>
+                <ul class="muted">
+                    <li>Built a grid-based PLC circuit editor in C++/MFC (WinAPI) with pin-to-pin wiring and user-defined BlackBox blocks.</li>
+                    <li>Wrote a real-time signal-propagation simulation engine with zoom, and undo/redo on the Command pattern.</li>
+                    <li>Removed rendering flicker with double buffering through a memory device context.</li>
+                </ul>
+            </div>
         </section>
 
         <section id="projects" class="section-card">
@@ -306,69 +375,118 @@
                 <input id="projectSearch" type="search" placeholder="Search by title or keyword..." aria-label="Search projects">
                 <select id="projectFilter" aria-label="Filter by category">
                     <option value="all">All categories</option>
+                    <option value="systems">Systems / Compilers</option>
+                    <option value="security">Security / Networks</option>
+                    <option value="backend">Backend / Web</option>
                     <option value="ml">ML / Data</option>
                     <option value="cpp">C++ / DSA</option>
-                    <option value="automation">Automation</option>
-                    <option value="webgame">Web / Games</option>
-                    <option value="hardware">Hardware</option>
                 </select>
             </div>
-
             <div class="projects-grid" id="projectsGrid">
-                <article class="project-card" data-category="cpp" data-keywords="plagiarism detector c++ ast similarity">
+                <article class="project-card" data-category="security" data-keywords="secure chat c++ diffie hellman aes-gcm pki mitm end-to-end encryption openssl">
+                    <span class="pill">Security / C++</span>
+                    <h3>Secure Chat Application</h3>
+                    <p class="team">Network Security course project · team of 2 · 2026</p>
+                    <p class="muted">Multithreaded C++ TCP chat hardened in five phases: Diffie–Hellman and AES-GCM written from scratch, a private-CA PKI handshake that defeats a self-built MITM proxy, and end-to-end encryption with 60-second key rotation.</p>
+                    <a href="https://github.com/PushpendraUikey/secure-chat-app" target="_blank" rel="noopener">View on GitHub</a>
+                </article>
+                <article class="project-card" data-category="security" data-keywords="dns dnssec nsec3 doh dot bind docker libpcap attacks">
+                    <span class="pill">Security / Networks</span>
+                    <h3>DNS Security Infrastructure</h3>
+                    <p class="team">Network Security course project · team of 2 · 2026</p>
+                    <p class="muted">Dockerized DNS hierarchy (root, TLD, authoritative, BIND 9 resolver). On-path attacks in C/libpcap, then defended with DNSSEC, NSEC3, DoT and DoH across seven phases.</p>
+                    <a href="https://github.com/PushpendraUikey/DNS_Infrastructure" target="_blank" rel="noopener">View on GitHub</a>
+                </article>
+                <article class="project-card" data-category="systems" data-keywords="compiler flex bison mips spim c++ three address code">
+                    <span class="pill">Compilers</span>
+                    <h3>Compiler for a C-like Language</h3>
+                    <p class="team">Implementation of Programming Languages · solo · 2026</p>
+                    <p class="muted">Multi-pass C++ compiler for a C subset with a Flex scanner, LALR(1) Bison grammar, type checking and scoped symbol tables, lowering to three-address code and RTL and emitting SPIM/MIPS assembly.</p>
+                </article>
+                <article class="project-card" data-category="systems" data-keywords="java soot monomorphization devirtualization points-to inlining">
+                    <span class="pill">Compiler Optimization</span>
+                    <h3>Monomorphization for Java</h3>
+                    <p class="team">Code Optimization course project · team of 2 · 2026</p>
+                    <p class="muted">Soot pass that inlines, devirtualizes or type-guards Java virtual calls using points-to analysis and 2-object sensitivity; optimized 38 of 40 call sites across 15 tests with output unchanged.</p>
+                    <a href="https://github.com/PushpendraUikey/CS6004_PA4_Monomorphization_optimization" target="_blank" rel="noopener">View on GitHub</a>
+                </article>
+                <article class="project-card" data-category="systems" data-keywords="xv6 operating system kernel threads mmap copy-on-write scheduler shell pthreads">
+                    <span class="pill">Operating Systems</span>
+                    <h3>xv6 and Linux Systems Labs</h3>
+                    <p class="team">Operating Systems course · 2025</p>
+                    <p class="muted">Added user-level threads, mmap, copy-on-write fork, a priority scheduler and new syscalls to xv6. Wrote a Linux shell with pipes and job control, and a Pthreads thread pool.</p>
+                </article>
+                <article class="project-card" data-category="systems" data-keywords="rpc stub generator idl c++20 tcp marshalling">
+                    <span class="pill">Modern C++</span>
+                    <h3>RPC Stub Generator</h3>
+                    <p class="team">Modern C++ course · 2026</p>
+                    <p class="muted">rpcgen-style C++ tool that turns an IDL spec into client proxies and server skeletons which marshal calls over TCP.</p>
+                </article>
+                <article class="project-card" data-category="backend" data-keywords="medicore hospital react node express postgresql fhir jwt">
+                    <span class="pill">Full Stack</span>
+                    <h3>MediCore: Hospital Information System</h3>
+                    <p class="team">Course project · team project · 2026</p>
+                    <p class="muted">Admissions and lab system on React, Node/Express and PostgreSQL, linked over HL7 FHIR R4. My part: the project scaffold, admin console, registration desk and JWT role-based access.</p>
+                    <a href="https://github.com/PushpendraUikey/his-project" target="_blank" rel="noopener">View on GitHub</a>
+                </article>
+                <article class="project-card" data-category="security" data-keywords="link state routing dijkstra udp tcp python c++ networks">
+                    <span class="pill">Networks</span>
+                    <h3>Link-State Routing Emulator</h3>
+                    <p class="team">Computer Networks lab · team of 2 · 2025</p>
+                    <p class="muted">C++ oracle hands out topology over TCP to Python router nodes, which flood link-state packets over UDP and compute shortest paths with Dijkstra.</p>
+                </article>
+                <article class="project-card" data-category="cpp" data-keywords="plagiarism detector c++ similarity tokens multithreaded">
                     <span class="pill">C++ / Analysis</span>
-                    <h3>Plagiarism Detector for C++ Code</h3>
-                    <p class="muted">Analyzes abstract syntax and logic similarity to identify copied assignments.</p>
+                    <h3>Code Similarity Detector</h3>
+                    <p class="team">Data Structures &amp; Algorithms lab · team of 2 · 2024</p>
+                    <p class="muted">Multithreaded C++ detector that tokenizes source files and matches token sequences to flag similar code.</p>
                     <a href="https://github.com/PushpendraUikey/plagiarism_checker" target="_blank" rel="noopener">View on GitHub</a>
                 </article>
-
-                <article class="project-card" data-category="webgame" data-keywords="pygame 2d shooter alien invasion">
-                    <span class="pill">Game Dev</span>
-                    <h3>Alien Invasion</h3>
-                    <p class="muted">A Python + Pygame 2D shooter built with gameplay loops and collision systems.</p>
-                    <a href="https://github.com/PushpendraUikey/Alien-Invasion" target="_blank" rel="noopener">View on GitHub</a>
+                <article class="project-card" data-category="ml" data-keywords="stocknet lstm sentiment stock forecasting streamlit">
+                    <span class="pill">ML / Time Series</span>
+                    <h3>StockNet</h3>
+                    <p class="team">AI &amp; ML course project · team of 2 · 2025</p>
+                    <p class="muted">LSTM models for 7-day-ahead forecasts on 25 stocks, with sentiment scores from 110K+ tweets, served through a Streamlit app.</p>
                 </article>
-
-                <article class="project-card" data-category="automation" data-keywords="bash grader automation python statistics">
-                    <span class="pill">Automation</span>
-                    <h3>Bash Grader</h3>
-                    <p class="muted">Automated grading workflow in Bash/Python with statistical reporting.</p>
-                    <a href="https://github.com/PushpendraUikey/BashGrader" target="_blank" rel="noopener">View on GitHub</a>
-                </article>
-
-                <article class="project-card" data-category="cpp" data-keywords="data structures algorithms avl trie graph c++">
+                <article class="project-card" data-category="cpp" data-keywords="data structures algorithms leetcode codeforces cses c++">
                     <span class="pill">C++ / DSA</span>
-                    <h3>DSA Implementations</h3>
-                    <p class="muted">Collection of core data structures and algorithms including trees, tries, and graph routines.</p>
+                    <h3>Data Structures &amp; Algorithms</h3>
+                    <p class="muted">600+ C++ solutions to LeetCode, Codeforces and CSES problems, organised by topic.</p>
                     <a href="https://github.com/PushpendraUikey/Data-Structures-Algorithm" target="_blank" rel="noopener">View on GitHub</a>
                 </article>
-
-                <article class="project-card" data-category="ml" data-keywords="stocknet deep learning time series prediction">
-                    <span class="pill">ML / Time Series</span>
-                    <h3>StockNet (Ongoing)</h3>
-                    <p class="muted">Stock price prediction experiments using deep learning and time-series modeling.</p>
-                </article>
-
-                <article class="project-card" data-category="hardware" data-keywords="self stabilizing drone arduino pid sensors quadcopter">
-                    <span class="pill">Embedded / Control</span>
-                    <h3>Self-Stabilizing Drone</h3>
-                    <p class="muted">Built a quadcopter with Arduino + PID control for stable flight behavior.</p>
-                </article>
-
-                <article class="project-card" data-category="ml" data-keywords="data visualization plotly matplotlib github api">
-                    <span class="pill">Data Visualization</span>
-                    <h3>Data Visualization</h3>
-                    <p class="muted">Interactive visualizations using Matplotlib/Plotly with GitHub API integrations.</p>
-                    <a href="https://github.com/PushpendraUikey/Data-Visualization" target="_blank" rel="noopener">View on GitHub</a>
-                </article>
-
-                <article class="project-card" data-category="webgame" data-keywords="javascript dice game guess my number dom">
-                    <span class="pill">JavaScript</span>
-                    <h3>Dice Game / Guess My Number</h3>
-                    <p class="muted">Browser mini-games to practice JavaScript logic and DOM interaction.</p>
+                <article class="project-card" data-category="backend" data-keywords="bash grader shell cli csv automation">
+                    <span class="pill">Automation</span>
+                    <h3>Bash Grader</h3>
+                    <p class="team">Software Systems lab · 2024</p>
+                    <p class="muted">Command-line gradebook in Bash: merge exam CSVs, total marks, and version them with a mini commit/checkout.</p>
+                    <a href="https://github.com/PushpendraUikey/BashGrader" target="_blank" rel="noopener">View on GitHub</a>
                 </article>
             </div>
             <p class="no-results" id="noResults">No projects match this search/filter right now.</p>
+        </section>
+
+        <section id="skills" class="section-card">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div><h3>Languages</h3><p class="muted">C++ (C++20), C, Python, Kotlin, Java, TypeScript, JavaScript, SQL, Bash</p></div>
+                <div><h3>Systems</h3><p class="muted">Linux, Pthreads, POSIX sockets, xv6, Flex/Bison, Soot, MFC/WinAPI</p></div>
+                <div><h3>Security &amp; Networks</h3><p class="muted">Diffie–Hellman, AES-GCM, PKI, DNSSEC, DoT/DoH, OpenSSL, libpcap, BIND 9, nginx, Wireshark</p></div>
+                <div><h3>Backend &amp; Web</h3><p class="muted">Node.js, Express, React, PostgreSQL, Redis, Kafka, REST, JWT</p></div>
+                <div><h3>ML &amp; Data</h3><p class="muted">NumPy, Pandas, scikit-learn, TensorFlow/Keras, PySpark, pgvector, RAG</p></div>
+                <div><h3>Tools</h3><p class="muted">Git, Docker, GDB, Make, VirtualBox, LaTeX</p></div>
+            </div>
+        </section>
+
+        <section id="achievements" class="section-card">
+            <h2>Achievements</h2>
+            <ul class="highlight-list muted">
+                <li>99.06 percentile in JEE Advanced and 99.3 percentile in JEE Main (2023)</li>
+                <li>Vahani Scholar, one of 50 students selected across India (2023)</li>
+                <li>Dakshana Scholar, one of 100 selected from 6,000 applicants (2021)</li>
+                <li>NTSE Scholar, awarded by NCERT to the top 2,000 students nationwide (2021)</li>
+                <li>Mentor for the Summer of Science DSA track and WnCC Codewars bot programming (2025)</li>
+                <li>Chess blitz rating 2100+; first place in the inter-hostel chess tournament (2026)</li>
+            </ul>
         </section>
 
         <section id="resume" class="section-card">
@@ -380,7 +498,7 @@
             <h2>Contact</h2>
             <p>Email: <a href="mailto:pushpendrauikey963@gmail.com">pushpendrauikey963@gmail.com</a></p>
             <div class="contact-links">
-                <a href="https://github.com/pushpendrauikey/" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://github.com/PushpendraUikey" target="_blank" rel="noopener">GitHub</a>
                 <a href="https://www.linkedin.com/in/pushpendra14uikey/" target="_blank" rel="noopener">LinkedIn</a>
                 <a href="https://www.geeksforgeeks.org/user/pushpendrauikey/" target="_blank" rel="noopener">GeeksforGeeks</a>
                 <a href="https://www.chess.com/member/pushpendrauikey/" target="_blank" rel="noopener">Chess.com</a>
