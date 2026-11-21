@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{{ page.description | default: page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 }}">
+    <link rel="stylesheet" href="{{ '/assets/blog.css' | relative_url }}">
+    <script>
+        // Apply the saved theme before paint, using the same key as the portfolio.
+        try { if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark-pre'); } catch (e) {}
+    </script>
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a class="brand" href="/">Pushpendra Uikey</a>
+            <nav>
+                <a href="/">Portfolio</a>
+                <a href="/blog/" class="active">Blog</a>
+                <button class="toggle-btn" id="themeToggle" type="button" aria-label="Toggle dark mode">🌙 Dark</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        {{ content }}
+    </main>
+
+    <footer class="footer">
+        <p>© {{ site.time | date: "%Y" }} Pushpendra Uikey · <a href="/">Portfolio</a> · <a href="/blog/">Blog</a></p>
+    </footer>
+
+    <script>
+        const body = document.body;
+        const themeToggle = document.getElementById('themeToggle');
+        let saved = null;
+        try { saved = localStorage.getItem('theme'); } catch (e) {}
+        if (saved === 'dark') {
+            body.classList.add('dark');
+            themeToggle.textContent = '☀️ Light';
+        }
+        document.documentElement.classList.remove('dark-pre');
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark');
+            const dark = body.classList.contains('dark');
+            try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+            themeToggle.textContent = dark ? '☀️ Light' : '🌙 Dark';
+        });
+    </script>
+</body>
+</html>

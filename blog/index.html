@@ -1,0 +1,20 @@
+---
+layout: default
+title: Blog
+description: Notes on the IT and software industry, AI/ML, and stock markets and fintech.
+---
+<section class="blog-intro">
+    <h1>Blog</h1>
+    <p>Notes on the IT and software industry, AI/ML, and stock markets and fintech. Everything here is personal commentary, not investment advice.</p>
+</section>
+
+<ul class="post-list">
+    {% for post in site.posts %}
+    <li class="post-card">
+        <p class="meta">{{ post.date | date: "%B %-d, %Y" }}</p>
+        <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+        <p>{{ post.excerpt | strip_html | truncatewords: 45 }}</p>
+        <a class="read-more" href="{{ post.url | relative_url }}">Read post →</a>
+    </li>
+    {% endfor %}
+</ul>
