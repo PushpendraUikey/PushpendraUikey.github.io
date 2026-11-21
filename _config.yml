@@ -1,0 +1,9 @@
+# Jekyll settings for the blog section of the site.
+# index.html has no front matter, so Jekyll copies it unchanged.
+title: Pushpendra Uikey
+description: Notes on IT, AI/ML, markets and fintech
+url: https://pushpendrauikey.github.io
+permalink: /blog/:year/:month/:title/
+markdown: kramdown
+exclude:
+  - README.md
